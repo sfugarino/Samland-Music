@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { MusicComponent } from './components/music/music.component';
+import { ArtistComponent } from './components/music/artist/artist.component';
+import { SongComponent } from './components/music/song/song.component';
+import { SongListComponent } from './components/music/song-list/song-list.component';
+import { AlbumListComponent } from './components/music/album-list/album-list.component';
+import { AlbumComponent } from './components/music/album/album.component';
 
-const routes: Routes = [];
+
+export const routes: Routes = [
+  { path: 'artist', component: MusicComponent, data: { label: 'Artist' } },
+  { path: 'artist/:id', component: AlbumListComponent, data: {} },
+  { path: '', redirectTo: '/artists', pathMatch: 'full' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

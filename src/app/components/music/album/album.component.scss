@@ -1,0 +1,8 @@
+mat-card{
+    width: 200px;
+
+    img{
+        object-fit: cover; /*this makes the image in src fit to the size specified below*/
+        box-shadow: 5px 5px 10px;
+      }
+}
