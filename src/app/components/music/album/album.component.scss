@@ -1,8 +1,12 @@
-mat-card{
-    width: 200px;
 
-    img{
+
+  mat-card {
+    max-width: 200px;
+    cursor: pointer;
+
+    img {
         object-fit: cover; /*this makes the image in src fit to the size specified below*/
-        box-shadow: 5px 5px 10px;
+        box-shadow: 2px 2px 5px grey;
+        
       }
-}
+  }

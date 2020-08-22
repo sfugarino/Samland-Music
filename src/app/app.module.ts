@@ -27,6 +27,8 @@ import { MusicService } from './services/music.service';
 import { ArtistComponent } from './components/music/artist/artist.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { AlbumDialogComponent } from './components/music/album-dialog/album-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     SongListComponent,
     ArtistComponent,
     ArtistListComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AlbumDialogComponent
   ],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MatTableModule,
     MatCardModule,
     MatSortModule,
+    MatDialogModule,
     FlexLayoutModule
   ],
   providers: [MusicService],
