@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, resolveForwardRef } from '@angular/core';
 // @ts-ignore
 import artistsJson from '../../assets/artist.json';
 import { Artist } from './artist';
 import { BehaviorSubject, ReplaySubject, Observable, Observer } from 'rxjs';
+import { Album } from './album';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,32 @@ export class MusicService {
     });
   }
 
+  getArtistPromise(id: number): Promise<Artist | undefined> {
+
+    return new Promise<Artist | undefined>((resolve, reject) => {
+      let artists: Artist[] = [];
+      artists = Object.assign(artists, artistsJson);
+      const artist: Artist | undefined = artists.find((a: Artist) => {
+        // tslint:disable-next-line: triple-equals
+        return (a.id == id);
+      });
+
+      console.log(artist);
+      resolve(artist);
+    });
+  }
+
+  getAlbums(artistId: number): Promise<Album[]> {
+
+    return new Promise<Album[]>((resolve, reject) => {
+      let albums: Album[] = [];
+      this.getArtistPromise(artistId).then(artist => {
+        if (artist && artist.albums) {
+          albums = artist.albums;
+        }
+        resolve(albums);
+      });
+    });
+
+  }
 }

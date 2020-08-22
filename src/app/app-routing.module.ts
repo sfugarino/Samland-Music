@@ -12,7 +12,7 @@ import { AlbumComponent } from './components/music/album/album.component';
 export const routes: Routes = [
   { path: 'artist', component: MusicComponent, data: { label: 'Artist' } },
   { path: 'artist/:id', component: AlbumListComponent, data: {} },
-  { path: '', redirectTo: '/artists', pathMatch: 'full' },
+  { path: '', redirectTo: '/artist', pathMatch: 'full' },
 ];
 
 @NgModule({

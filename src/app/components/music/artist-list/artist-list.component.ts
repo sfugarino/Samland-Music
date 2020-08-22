@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from 'src/app/services/music.service';
 import { Artist } from '../../../services/artist';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-artist-list',
@@ -8,13 +9,11 @@ import { Artist } from '../../../services/artist';
   styleUrls: ['./artist-list.component.scss']
 })
 export class ArtistListComponent implements OnInit {
-  artists: Artist[] = [];
+  artists: Observable<Artist[]> | undefined;
   constructor(private musicService: MusicService) { }
 
   ngOnInit(): void {
-    this.musicService.getArtists().subscribe(artists => {
-      this.artists = artists;
-    });
+    this.artists = this.musicService.getArtists();
   }
 
 }

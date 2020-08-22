@@ -11,18 +11,13 @@ import { MusicService } from 'src/app/services/music.service';
 })
 export class AlbumListComponent implements OnInit {
 
-  albums: Album[] = [];
+  albums: Promise<Album[]> | undefined;
 
   constructor(private musicService: MusicService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const artistId: number = this.route.snapshot.params.id;
-    this.musicService.getArtist(artistId).subscribe(artist => {
-      if (artist && artist.albums) {
-        this.albums = artist.albums;
-      }
-    });
-
+    this.albums = this.musicService.getAlbums(artistId);
   }
 
 }
