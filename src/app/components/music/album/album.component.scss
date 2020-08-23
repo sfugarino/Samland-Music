@@ -3,10 +3,13 @@
   mat-card {
     max-width: 200px;
     cursor: pointer;
-
-    img {
+    .mat-card-title {
+      font-size: 16px;
+    }
+    img.mat-card-image {
+        // border: 1px solid grey;
+        //box-shadow: 1px 1px 3px grey;
         object-fit: cover; /*this makes the image in src fit to the size specified below*/
-        box-shadow: 2px 2px 5px grey;
-        
+ 
       }
   }

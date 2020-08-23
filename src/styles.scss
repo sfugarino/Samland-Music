@@ -8,7 +8,11 @@ body {
 }
 
 :root:after {
-    overflow:hidden;
+    position: absolute;
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
     content: 
         url("/assets/images/abbey_road.jpg") 
         url("/assets/images/floyd.jpg")
