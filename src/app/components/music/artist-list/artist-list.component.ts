@@ -10,10 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class ArtistListComponent implements OnInit {
   artists: Observable<Artist[]> | undefined;
+  loaded = false;
   constructor(private musicService: MusicService) { }
 
   ngOnInit(): void {
     this.artists = this.musicService.getArtists();
+    this.loaded = true;
   }
 
 }
