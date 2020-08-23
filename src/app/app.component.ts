@@ -63,9 +63,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   routeHasData(route: Route, index: number, arr: Routes): boolean {
-    if (arr && route && route.data) {
-      return true;
-    }
-    return false;
+    return (arr && route && route.data && route.data.showInSidebar);
   }
 }
