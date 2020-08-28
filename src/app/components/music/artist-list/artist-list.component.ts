@@ -14,7 +14,7 @@ export class ArtistListComponent implements OnInit {
   constructor(private musicService: MusicService) { }
 
   ngOnInit(): void {
-    this.artists = this.musicService.getArtists();
+    this.artists = this.musicService.getArtists()
     this.loaded = true;
   }
 
