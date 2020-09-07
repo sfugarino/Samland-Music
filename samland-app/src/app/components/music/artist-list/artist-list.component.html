@@ -1,0 +1,11 @@
+<ng-template #container [ngIf]='loaded'>
+    <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center" class='flexGrid'>
+        <app-artist *ngFor="let artist of artists | async" [artist]='artist'></app-artist>
+    </div>
+</ng-template>
+
+<ng-template #spinner* [ngIf]='!loaded'>
+    <div style="height: 100%; width: 100%">
+        <mat-spinner style="position:fixed;top:50%;left:50%"></mat-spinner>
+    </div>
+</ng-template>

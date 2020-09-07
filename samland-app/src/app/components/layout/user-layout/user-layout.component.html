@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+        <span>Samland Music</span>
+
+        <nav *ngIf="!(isHandset$ | async)">
+            <a mat-button *ngFor="let route of routes" [routerLink]="route?.path">{{ route?.data?.label}}</a>
+        </nav>
+
+        <span class="menu-spacer"></span>
+
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+        <app-breadcrumb [deliminator]="'>'"></app-breadcrumb>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

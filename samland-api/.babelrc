@@ -1,0 +1,17 @@
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "node": 4
+                }
+            }
+        ],
+        "@babel/typescript"
+    ],
+    "plugins": [
+        "transform-class-properties",
+        "@babel/plugin-transform-runtime"
+    ]
+}

@@ -1,0 +1,11 @@
+version: "3.4"
+services:
+  app:
+    build: .
+    image: sfugarino/samland-app
+    container_name: samland-app
+    ports:
+      - "4200:80"
+    environment:
+      - SL_MUSIC_API_HOST=api
+    
