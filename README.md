@@ -1,6 +1,6 @@
 # Samland-Music
 ### Usage
-Run docker-compose up --build
+docker-compose up --build
 
 ### Description
 samland-app: Main angular application.    
