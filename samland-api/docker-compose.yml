@@ -1,13 +1,13 @@
 version: "3.4"
 services:
   database:
-    build: ./samland-data
+    build: ../samland-data
     image: sfugarino/mongodb
     container_name: mongodb
     ports:
       - "27017:27017"
   api:
-    build: ./samland-api
+    build: .
     image: sfugarino/samland-api
     container_name: api
     links:
@@ -18,15 +18,3 @@ services:
       - MONGODB_HOST=database
     depends_on:
       - database
-  app:
-    build: ./samland-app
-    image: sfugarino/samland-app
-    container_name: app
-    links:
-      - api
-    ports:
-      - "4200:80"
-    environment:
-      - SL_MUSIC_API_HOST=api
-    depends_on:
-      - api

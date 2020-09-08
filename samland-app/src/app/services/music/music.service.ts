@@ -23,7 +23,7 @@ export class MusicService {
     });
   }
 
-  getArtists(): Observable<Artist[]> {
+  getArtists_old(): Observable<Artist[]> {
     let artists: Artist[] = [];
     artists = Object.assign(artists, artistsJson);
     return new Observable((observer: Observer<Artist[]>) => {
@@ -31,7 +31,12 @@ export class MusicService {
     });
   }
 
-  getArtist(id: number): Observable<Artist | undefined> {
+  getArtists(): Observable<Artist[]> {
+    const url = this.musicServiceUrl + '/api/artist';
+    return this.httpClient.get<Artist[]>(url);
+  }
+
+  getArtist_old(id: number): Observable<Artist | undefined> {
     let artists: Artist[] = [];
     artists = Object.assign(artists, artistsJson);
     const artist: Artist | undefined = artists.find((a: Artist) => {
@@ -42,6 +47,11 @@ export class MusicService {
     return new Observable((observer: Observer<Artist | undefined>) => {
       observer.next(artist);
     });
+  }
+
+  getArtist(id: number): Observable<Artist> {
+    const url = this.musicServiceUrl + '/api/artist/' + id.toString();
+    return this.httpClient.get<Artist>(url);
   }
 
   getArtistPromise(id: number): Promise<Artist | undefined> {
@@ -60,12 +70,14 @@ export class MusicService {
   getAlbums(artistId: number): Promise<Album[]> {
     return new Promise<Album[]>((resolve, reject) => {
       let albums: Album[] = [];
-      this.getArtistPromise(artistId).then((artist) => {
-        if (artist && artist.albums) {
-          albums = artist.albums;
-        }
-        resolve(albums);
-      });
+      this.getArtist(artistId)
+        .toPromise()
+        .then((artist) => {
+          if (artist && artist.albums) {
+            albums = artist.albums;
+          }
+          resolve(albums);
+        });
     });
   }
 

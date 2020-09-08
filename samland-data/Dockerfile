@@ -6,4 +6,4 @@ EXPOSE 27017
 CMD ["--port 27017"]
 
 # Set default container command
-ENTRYPOINT /usr/local/bin/docker-entrypoint.sh --sslMode disabled --bind_ip_all
+ENTRYPOINT /usr/local/bin/docker-entrypoint.sh --bind_ip_all
