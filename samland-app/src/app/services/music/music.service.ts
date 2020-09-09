@@ -16,7 +16,12 @@ interface Setting {
 export class MusicService {
   musicServiceUrl = 'http://localhost:8080';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    // this.getAPIHost().then((data: string) => {
+    //   this.musicServiceUrl = 'http://' + data + ':8080';
+    //   console.log(this.musicServiceUrl);
+    // });
+  }
 
   getArtists(): Observable<Artist[]> {
     const url = this.musicServiceUrl + '/api/artist';
