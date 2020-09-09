@@ -1,7 +1,7 @@
-<mat-card class="card" (click)="navigate(artist?.id!)">
-    <mat-card-header>
-        <mat-card-title>{{ artist?.name }}</mat-card-title>
-    </mat-card-header>
-    <img [src]="artist?.imageUrl">
-    <mat-card-content></mat-card-content>
+<mat-card class="card" (click)="navigate(artist?._id!)">
+  <mat-card-header>
+    <mat-card-title>{{ artist?.name }}</mat-card-title>
+  </mat-card-header>
+  <img [src]="artist?.imageUrl" />
+  <mat-card-content></mat-card-content>
 </mat-card>

@@ -1,6 +1,8 @@
 import express from "express";
 import { Application, Request, Response, NextFunction } from "express";
 import morgan from "morgan";
+import cors from "cors";
+
 import { AlbumController } from "./controllers/album-controller";
 import { ArtistController } from "./controllers/artist-controller";
 
@@ -10,6 +12,8 @@ const router: any = express.Router();
 app.use(morgan("dev"));
 
 app.use(express.json());
+
+app.use(cors());
 
 const port: any = process.env.PORT || 8080;
 
@@ -24,8 +28,6 @@ router.route("/artist").get((req: Request, res: Response) => {
   controller
     .getArtists()
     .then((artists) => {
-      req.headers["if-none-match"] = "";
-      req.headers["if-modified-since"] = "";
       res.status(200).send(artists);
     })
     .catch((err) => {

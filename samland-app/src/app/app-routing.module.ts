@@ -8,16 +8,27 @@ import { SongListComponent } from './components/music/song-list/song-list.compon
 import { AlbumListComponent } from './components/music/album-list/album-list.component';
 import { AlbumComponent } from './components/music/album/album.component';
 
-
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent, data: { label: 'Home', showInSidebar: true } },
-  { path: 'artist', component: MusicComponent, data: { label: 'Artist', showInSidebar: true } },
-  { path: 'artist/:id', component: AlbumListComponent, data: { label: 'Albums', showInSidebar: false } },
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: { label: 'Home', showInSidebar: true },
+  },
+  {
+    path: 'artist',
+    component: MusicComponent,
+    data: { label: 'Artist', showInSidebar: true },
+  },
+  {
+    path: 'artist/:id',
+    component: AlbumListComponent,
+    data: { label: 'Albums', showInSidebar: false },
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

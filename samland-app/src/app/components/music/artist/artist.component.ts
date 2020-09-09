@@ -6,18 +6,17 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.scss']
+  styleUrls: ['./artist.component.scss'],
 })
 export class ArtistComponent implements OnInit {
-
   @Input()
   artist: Artist | undefined;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   navigate(id: number): void {
-    this.router.navigate(['./', id], { relativeTo: this.activatedRoute });
+    this.router.navigate(['artist', id]);
   }
 }

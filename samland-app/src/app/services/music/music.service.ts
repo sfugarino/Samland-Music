@@ -16,55 +16,18 @@ interface Setting {
 export class MusicService {
   musicServiceUrl = 'http://localhost:8080';
 
-  constructor(private httpClient: HttpClient) {
-    this.getAPIHost().then((data: string) => {
-      this.musicServiceUrl = 'http://' + data + ':8080';
-      console.log(this.musicServiceUrl);
-    });
-  }
-
-  getArtists_old(): Observable<Artist[]> {
-    let artists: Artist[] = [];
-    artists = Object.assign(artists, artistsJson);
-    return new Observable((observer: Observer<Artist[]>) => {
-      observer.next(artists);
-    });
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getArtists(): Observable<Artist[]> {
     const url = this.musicServiceUrl + '/api/artist';
+    console.log('Get: ' + url);
     return this.httpClient.get<Artist[]>(url);
-  }
-
-  getArtist_old(id: number): Observable<Artist | undefined> {
-    let artists: Artist[] = [];
-    artists = Object.assign(artists, artistsJson);
-    const artist: Artist | undefined = artists.find((a: Artist) => {
-      // tslint:disable-next-line: triple-equals
-      return a.id == id;
-    });
-
-    return new Observable((observer: Observer<Artist | undefined>) => {
-      observer.next(artist);
-    });
   }
 
   getArtist(id: number): Observable<Artist> {
     const url = this.musicServiceUrl + '/api/artist/' + id.toString();
+    console.log('Get: ' + url);
     return this.httpClient.get<Artist>(url);
-  }
-
-  getArtistPromise(id: number): Promise<Artist | undefined> {
-    return new Promise<Artist | undefined>((resolve, reject) => {
-      let artists: Artist[] = [];
-      artists = Object.assign(artists, artistsJson);
-      const artist: Artist | undefined = artists.find((a: Artist) => {
-        // tslint:disable-next-line: triple-equals
-        return a.id == id;
-      });
-
-      resolve(artist);
-    });
   }
 
   getAlbums(artistId: number): Promise<Album[]> {

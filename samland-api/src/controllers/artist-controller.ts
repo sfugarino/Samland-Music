@@ -9,6 +9,7 @@ import {
 
 export class ArtistController {
   private url: string = "mongodb://" + process.env.MONGODB_HOST + ":27017";
+
   async getArtists(): Promise<any[]> {
     console.log("Connecting to mongodb...");
     let options: MongoClientOptions;
@@ -49,6 +50,7 @@ export class ArtistController {
       const collection: Collection<any> = db.collection("artists");
       const result: AggregationCursor = await collection
         .aggregate([
+          { $match: { _id: id } },
           {
             $lookup: {
               from: "albums",
